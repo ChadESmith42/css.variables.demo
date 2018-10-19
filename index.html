@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>Responsive CSS Variables</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is a practice and demonstration site." />
+    <meta name="keywords" content="practice, HTML, CSS, CSS Variables, How-To" />
+    <link rel="stylesheet" href="site.css">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+
+  <body onload="copyrightDate()">
+
+    <div class="background">
+      <div id="content">
+
+        <header class="header">
+          <h1>Variables in CSS</h1>
+          <p>
+            Using CSS variables to create responsive websites.
+          </p>
+
+        </header>
+
+        <!-- Main content. 60% of content div. -->
+        <main class="main">
+          <div class="article">
+            <h1>What are CSS Variables</h1>
+            <p>
+              CSS variables allow the developer to set values that can be used over and over throughout the code, just
+              like a variable in almost every other language.
+            </p>
+            <p>
+              For example, I set the following variables in the CSS stylesheet for this document:</p>
+
+            <div>
+              <code>
+                :root {<br />
+                &emsp;&emsp;&emsp;--base-font-size: 30px;<br />
+                &emsp;&emsp;&emsp;--columns: 350px;<br />
+                &emsp;&emsp;&emsp;--base-margin: 30px;<br />
+                &emsp;&emsp;&emsp;--base-padding: 30px;<br />
+                &emsp;&emsp;&emsp;--float-left: left;<br />
+                &emsp;&emsp;&emsp;--float-right: right;<br />
+                &emsp;&emsp;&emsp;--clear: none;<br />
+                &emsp;&emsp;&emsp;--main-width: 60%;<br />
+                &emsp;&emsp;&emsp;--aside-width: 30%;<br />
+                &emsp;&emsp;&emsp;--main-left-margin: 30px;<br />
+                &emsp;&emsp;&emsp;--aside-right-margin: 30px;<br />
+                }<br />
+              </code>
+            </div>
+            <p>This code sets the font-size, column width, margin, and padding. If you notice, I've set variables for
+              float and clear. This is really useful for modifying a page to "stack" on small screens, but use a
+              main-aside style design on larger screeens.
+            </p>
+            <p>
+              I call the variable in my CSS like so:
+              <div>
+                <code>
+                  &emsp;body {<br />
+                  &emsp;&emsp;&emsp;&emsp;font-size: var(--base-font-size);<br />
+                  &emsp;}
+                </code>
+              </div>
+            </p>
+            <p>
+              Now, instead of rewriting all of the font-size, margin, padding, and column values in a media query, I
+              can simply re-set the variable values, like so:
+            </p>
+            <div>
+              <code>
+                @media all and (max-width: 450px) {<br />
+                &emsp;&emsp;:root {<br />
+                &emsp;&emsp;&emsp;&emsp;--columns: 200px;<br />
+                &emsp;&emsp;&emsp;&emsp;--base-margin: 15px;<br />
+                &emsp;&emsp;&emsp;&emsp;--base-padding: 15px;<br />
+                &emsp;&emsp;&emsp;&emsp;--base-font-size: 20px;<br />
+                &emsp;&emsp;&emsp;&emsp;--float-left: none;<br />
+                &emsp;&emsp;&emsp;&emsp;--float-right: none;<br />
+                &emsp;&emsp;&emsp;&emsp;--clear: both;<br />
+                &emsp;&emsp;&emsp;&emsp;--main-width: 100%;<br />
+                &emsp;&emsp;&emsp;&emsp;--aside-width: 100%;<br />
+                &emsp;&emsp;&emsp;&emsp;--main-left-margin: 15px;<br />
+                &emsp;&emsp;&emsp;&emsp;--aside-right-margin: 0px;<br />
+                &emsp;&emsp;&emsp;}<br />
+                }<br />
+              </code>
+            </div>
+          </div>
+          <div class="article">
+            <h1>That's It!</h1>
+            <p>
+              For this site, I probably saved 50-100 lines of code by using variables instead of recoding all of the
+              height, width, font, and positioning elements. Using variables also made it easier to handle the colors
+              for the site. One method of using variables to handle colors would be to create a different varible for
+              each color setting:</p>
+            <div>
+              <code>
+                &emsp;&emsp;--default-color: #black;<br />
+                &emsp;&emsp;--default-background-color: #white;<br />
+                &emsp;&emsp;--default-border-color: #ltgray;<br />
+                &emsp;&emsp;--hover-color: #white;<br />
+                &emsp;&emsp;--hover-background-color: #black;<br />
+                &emsp;&emsp;--hover-background-color: #ltblue;<br />
+              </code>
+              <p>
+                In my example above, my variable names are really long, which doesn't seem like much of a time saver.
+                However, if you have multiple color schemes, it might be a great way to keep everything organized.
+                Originally, I had five different color sets I had sampled from the background image, Van Gogh's Irises
+                In A Vase. In the end, I just didn't want to bother for such a simple project.
+              </p>
+              <p>
+                Go make something great with CSS variables!
+              </p>
+            </div>
+            </p>
+          </div>
+        </main>
+        <!-- End Main content. -->
+
+        <!-- Aside content. 20% of content div. -->
+        <aside class="aside">
+          <h2> Links</h2>
+          <nav role="navigation" class="nav">
+            <ul>
+              <li class="nav__item nav__item--hover topOfList"><a href="#" id="1" onclick="toggleMenu(this)">CSS Links
+                  <span id="menu__toggle1">&plus;</span></a>
+                <ul id="1a" class="dropdown">
+                  <li><a href="https://www.w3schools.com/cssref/default.asp" target="_blank">W3 Schools</a>
+                  </li>
+                  <li><a href="http://jigsaw.w3.org/css-validator/" target="_blank">CSS Validator</a></li>
+                  <li><a href="https://cssreference.io/" target="_blank">CSS Reference</a></li>
+                  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_cookbook" target="_blank">CSS
+                      Layout Cookbook</a></li>
+                  <li><a href="https://google.github.io/styleguide/htmlcssguide.html" target="_blank">Google HTML/CSS
+                      Styleguide</a></li>
+                </ul>
+              </li>
+              <li class="nav__item nav__item--hover"><a href="#" id="2" onclick="toggleMenu(this)">JavaScript
+                  Links<span id="menu__toggle2">&plus;</span></a>
+                <ul id="2a" class="dropdown">
+                  <li><a href="https://plainjs.com/javascript/" target="_blank">Plain JavaScript</a></li>
+                  <li><a href="https://jqueryui.com/" target="_blank">jQuery</a></li>
+                  <li><a href="https://google.github.io/styleguide/jsguide.html#features-local-variable-declarations"
+                      target="_blank">Google JS Style Guide</a></li>
+                  <li><a href="https://github.com/airbnb/javascript" target="_blank">Airbnb JS Style Guide</a></li>
+                </ul>
+              </li>
+              <li class="nav__item nav__item--hover bottomOfList"><a href="#" id="3" onclick="toggleMenu(this)">My
+                  Links<span id="menu__toggle3">&plus;</span></a>
+                <ul id="3a" class="dropdown">
+                  <li><a href="http://codingbychad.com/" target="_blank">Coding By Chad</a></li>
+                  <li><a href="www.linkedin.com/in/chadesmith" target="_blank">LinkedIn</a></li>
+                  <li><a href="https://github.com/ChadESmith42?tab=repositories" target="_blank">GitHub</a></li>
+                  <li><a href="https://bitbucket.org/chadesmith/" target="_blank">BitBucket</a></li>
+                  <li><a href="https://codepen.io/chadesmith42/" target="_blank">Code Pen</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <!-- End Aside content. -->
+
+        <!-- Clear to keep footer from floating up. -->
+        <div class="clear">
+        </div>
+
+        <!-- Footer content start. -->
+        <footer>
+          <p>Copyright &copy;<span id="copyright"></span> Coding By Chad</p>
+        </footer>
+        <!-- Footer content end. -->
+
+      </div>
+      <!--Ending the 80% div. -->
+    </div>
+
+
+  </body>
+
+  <html>
